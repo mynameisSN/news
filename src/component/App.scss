@@ -1,0 +1,175 @@
+@import '../sass/variable';
+// @import "../create-frame/CreateFrame";
+// @import "../apply-filter/ApplyFilter.scss";
+// @import "../card-item/CardItem.scss";
+// @import "../cards/Cards.scss";
+// @import "../filters/Filters.scss";
+// @import "../modal/Modal.scss";
+// @import "../search/Search.scss";
+// @import "../sorting/Sorting.scss";
+
+// #app {
+//   padding: 10px;
+//   @include desktop {
+//     padding: 0;
+//   }
+// }
+
+.App {
+    text-align: center;
+}
+
+// .App-logo {
+//     height: 40vmin;
+//     pointer-events: none;
+// }
+
+// @media (prefers-reduced-motion: no-preference) {
+//     .App-logo {
+//         animation: App-logo-spin infinite 20s linear;
+//     }
+// }
+
+// .App-header {
+//     background-color: #282c34;
+//     min-height: 100vh;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+//     font-size: calc(10px + 2vmin);
+//     color: white;
+// }
+
+// .App-link {
+//     color: #61dafb;
+// }
+
+// @keyframes App-logo-spin {
+//     from {
+//         transform: rotate(0deg);
+//     }
+//     to {
+//         transform: rotate(360deg);
+//     }
+// }
+
+/* suman */
+
+/* https://responsivedesign.is/develop/browser-feature-support/media-queries-for-common-device-breakpoints/ */
+
+// body {
+//     font-family: Arial, Helvetica, sans-serif;
+//     font-size: 13px;
+// }
+.wrapper {
+    padding: 20px;
+}
+.main {
+    width: 100%;
+    margin: 30px auto 0 auto;
+    background-color: $light-grey;
+}
+
+.main a {
+    text-decoration: none;
+    color: $black;
+}
+.thead {
+    background-color: $orange-text-color;
+    padding: 10px 0;
+}
+.logo img {
+    border: solid 1px $white;
+    vertical-align: middle;
+    margin: 0 20px 0 10px;
+}
+.top-news,
+.latest-news {
+    font-size: 16px;
+}
+
+a.selected {
+    color: $white;
+}
+.seperator {
+    border-right: 1px solid $black;
+
+    margin: 0 8px;
+}
+
+.row {
+    display: flex;
+    padding: 10px;
+}
+
+.row div {
+    /* border: 1px solid red; */
+    padding: 0 5px;
+}
+
+.tbody div.row:nth-child(even) {
+    background-color: $row-bg;
+}
+.row div.comment {
+    width: 5%;
+    text-align: right;
+    font-size: 14px;
+}
+.row div.t-vote {
+    width: 5%;
+    text-align: right;
+    font-size: 14px;
+}
+.row div.votelinks {
+    width: 20px;
+}
+.votearrow {
+    background: url('../images/grayarrow2x.gif') no-repeat;
+    background-size: 10px;
+    height: 10px;
+}
+.row div.title .title-h2 {
+    font-size: 15px;
+}
+
+.row div.title .sitebit,
+.row div.title .author {
+    color: $light-grey-text-color;
+}
+
+.row div.title .sitebit a {
+    color: $grey;
+}
+
+.row div.title .author span,
+.row div.title .hide span {
+    color: $black;
+}
+
+.row div.title .created,
+.row div.title .hide {
+    color: $grey;
+}
+
+.more-link {
+    padding: 20px 0;
+}
+.more-link span {
+    margin-left: calc(10% + 65px);
+}
+
+.more-link span a {
+    color: $orange-text-color;
+}
+
+/* Desktops and laptops ----------- */
+@include desktop {
+    .main {
+        width: 70%;
+    }
+    .votearrow {
+        background-size: 15px;
+        height: 15px;
+    }
+}
