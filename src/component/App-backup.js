@@ -77,7 +77,7 @@ class App extends React.Component {
 
             <div className="tbody">
               {<List news={news} />}
-a
+
             </div>
 
             <div className="more-link">
