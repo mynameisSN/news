@@ -11,31 +11,15 @@ const List = props => {
   if (!news) {
     return null;
   }
-  // console.log ('newslist item ', news && news);
 
   const renderList = news.map ((item, index) => {
-    // const dateFind = date => {
-    //   const str = date;
-    //   const res = str.split ('T');
-    //   const endDate = res[0].split('-');
-
-    //   console.log ('date ', date);
-    //   let now = moment (new Date ()); //todays date
-    //   let end = moment (res[0]); // another date
-    //   var duration = moment.duration (now.diff (end));
-    //   var days = duration.asDays ();
-    //   moment (end).fromNow ();
-    //   console.log (moment ([date]).fromNow ());
-
-    //   console.log (days);
-    // };
     return (
       <div className="row" key={`item-${index}`}>
         <div className="comment">{item.num_comments}</div>
         <div className="t-vote">{item.points}</div>
-        <div className="votelinks">
+        <div className="vote">
           <a href="#">
-            <div className="votearrow" title="upvote" />
+            <div className="vote-arrow" title="upvote" />
           </a>
         </div>
         <div className="title">
@@ -66,7 +50,7 @@ const List = props => {
     );
   });
 
-  return <div>{renderList}</div>;
+  return <div className="tbody">{renderList}</div>;
 };
 
 export default List;

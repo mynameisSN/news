@@ -1,0 +1,56 @@
+.tbody {
+    .row {
+        display: flex;
+        padding: 10px;
+        &:nth-child(even) {
+            background-color: $row-bg;
+        }
+        div {
+            padding: 0 5px;
+            &.comment {
+                width: 5%;
+                text-align: right;
+                font-size: 14px;
+            }
+            &.t-vote {
+                width: 5%;
+                text-align: right;
+                font-size: 14px;
+            }
+            &.vote {
+                width: 20px;
+                &-arrow {
+                    background: url('../../images/grayarrow2x.gif') no-repeat;
+                    background-size: 10px;
+                    height: 10px;
+                    @include desktop-xl {
+                        background-size: 15px;
+                        height: 15px;
+                    }
+                }
+            }
+        }
+        .title {
+            &-h2 {
+                font-size: 15px;
+            }
+            .sitebit,
+            .author {
+                color: $light-grey-text-color;
+                a {
+                    color: $grey;
+                }
+                span {
+                    color: $black;
+                }
+            }
+            .hide,
+            .created {
+                color: $grey;
+                span {
+                    color: $grey;
+                }
+            }
+        }
+    }
+}

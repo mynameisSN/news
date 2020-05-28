@@ -1,0 +1,30 @@
+.pagination {
+    padding: 20px;
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 40px;
+        li {
+            margin: 4px;
+            a {
+                color: $grey;
+                &:hover {
+                    color: $orange-text-color;
+                }
+            }
+            &.active a {
+                color: $orange-text-color;
+            }
+        }
+    }
+}
+
+.more-link {
+    padding: 20px 0;
+    span {
+        margin-left: calc(10% + 65px);
+        a {
+            color: $orange-text-color;
+        }
+    }
+}

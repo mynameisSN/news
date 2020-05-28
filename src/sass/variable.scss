@@ -3,6 +3,11 @@
         @content;
     }
 }
+@mixin desktop-xl {
+    @media only screen and (min-width: 1366px) {
+        @content;
+    }
+}
 
 $black: #000;
 $white: #fff;

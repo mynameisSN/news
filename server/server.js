@@ -1,12 +1,15 @@
 import express from 'express';
-import axios from 'axios';
+import cors from 'cors';
 
 import path from 'path';
 import fs from 'fs';
+import {StaticRouter, matchPath} from 'react-router-dom';
+import routes from '../src/component/routes';
 
 // below files needed to render our react component server side
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
+// import Home from '../src/component/home/Home';
 import App from '../src/component/App';
 
 const PORT = 8080;
@@ -17,12 +20,23 @@ const router = express.Router ();
 // app.get ('https://hn.algolia.com/api/v1/search?tags=front_page', (req, res) => {
 //   console.log (res);
 // });
+router.use (cors ());
 
 const serverRenderedContent = (req, res, next) => {
- 
-  App.requestInitialData ()
-  .then (initialData => {
+  const currentRoute = routes.find (route => matchPath (req.url, route));
+  const requestInitialData =
+    currentRoute.component.requestInitialData &&
+    currentRoute.component.requestInitialData ();
+
+  Promise.resolve (requestInitialData).then (initialData => {
     // console.log ('initialData JSONE ', initialData);
+
+    const context = {initialData};
+    const appRender = ReactDOMServer.renderToString (
+      <StaticRouter location={req.url} context={context}>
+        <App />
+      </StaticRouter>
+    );
 
     // now we will read our build index.html file
     fs.readFile (path.resolve ('./build/index.html'), 'utf8', (err, data) => {
@@ -34,7 +48,7 @@ const serverRenderedContent = (req, res, next) => {
         data.replace (
           // here data will be our index.html but we replace the mounting point, that is our #root div inside public -> indexx.html
           '<div id="root"></div>',
-          `<script>window.__initialData__= ${JSON.stringify (initialData)}</script><div id="root">${ReactDOMServer.renderToString (<App initialData={initialData} />)}</div>`
+          `<script>window.__initialData__= ${JSON.stringify (initialData)}</script><div id="root">${appRender}</div>`
         )
       );
     });

@@ -1,0 +1,16 @@
+.thead {
+    background-color: $orange-text-color;
+    padding: 10px 0;
+    display: flex;
+    .logo {
+        img {
+            border: solid 1px $white;
+            vertical-align: middle;
+            margin: 0 20px 0 10px;
+        }
+    }
+    &-seperator {
+        border-right: 1px solid $black;
+        margin: 0 8px;
+    }
+}
