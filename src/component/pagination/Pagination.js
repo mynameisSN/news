@@ -2,8 +2,6 @@ import React from 'react';
 
 const Pagination = props => {
   const pageLinks = [];
-
-  console.log (props.pages);
   for (let i = 0; i < props.pages; i++) {
     let active = props.currentPage === i ? 'active' : '';
 
@@ -13,8 +11,6 @@ const Pagination = props => {
         key={i}
         onClick={() => {
           props.nextPage (i);
-          console.log ('props.currentPage ', props.currentPage);
-          console.log ('props.pages ', props.pages);
         }}
       >
         <a href="#">{i + 1}</a>

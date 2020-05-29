@@ -4,7 +4,6 @@ export const extractDomain = url => {
   return url;
 };
 
-
 export const canUseDOM = () => {
   const isClitent =
     typeof window !== 'undefined' &&

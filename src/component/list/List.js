@@ -13,15 +13,24 @@ const List = props => {
   }
 
   const renderList = news.map ((item, index) => {
+    const hideItemFromView = e => {
+      e.preventDefault ();
+      props.hideNewsItems (e, item.objectID);
+    };
     return (
       <div className="row" key={`item-${index}`}>
         <div className="comment">{item.num_comments}</div>
         <div className="t-vote">{item.points}</div>
-        <div className="vote">
-          <a href="#">
-            <div className="vote-arrow" title="upvote" />
-          </a>
-        </div>
+        {!item.hide &&
+          <div className="vote">
+            <a
+              href="#"
+              onClick={e =>
+                props.onVoteCast (e, item.objectID, item.points, 'upvote')}
+            >
+              <div className="vote-arrow" title="upvote" />
+            </a>
+          </div>}
         <div className="title">
           <span className="title-h2">
             {item.title}
@@ -43,7 +52,22 @@ const List = props => {
             {timeAgo.format (new Date (item.created_at), 'time')} ago{' '}
           </span>
           <span className="hide">
-            [ <span><a href="#">hide</a></span> ]
+            [ <span>
+              <a href="#" onClick={hideItemFromView}>
+                hide
+              </a>
+            </span> ]
+            {item.hide &&
+              <span className="unvote">
+                {' '}
+                <a
+                  href="#"
+                  onClick={e =>
+                    props.onVoteCast (e, item.objectID, item.points, 'unvote')}
+                >
+                  unvote
+                </a>
+              </span>}
           </span>
         </div>
       </div>

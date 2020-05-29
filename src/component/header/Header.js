@@ -2,7 +2,6 @@ import React from 'react';
 import Anchor from '../anchor/Anchor';
 
 const Header = props => {
- 
   return (
     <div className="thead">
       <span className="logo">
